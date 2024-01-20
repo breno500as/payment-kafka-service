@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import com.br.payment.service.PaymentService;
 import com.br.payment.utils.JsonUtil;
 
 @Component
 public class PaymentValidationConsumer {
 
 	private Logger logger = LoggerFactory.getLogger(PaymentValidationConsumer.class);
+	
+	@Autowired
+	private PaymentService paymentService;
 
 	@Autowired
 	private JsonUtil jsonUtil;
@@ -27,6 +31,8 @@ public class PaymentValidationConsumer {
 		var event = jsonUtil.toEvent(payload);
 		
 		this.logger.info(event.toString());
+		
+		this.paymentService.trySuccessEvent(event);
 	}
 	
 	@KafkaListener(
@@ -40,6 +46,8 @@ public class PaymentValidationConsumer {
 		var event = jsonUtil.toEvent(payload);
 		
 		this.logger.info(event.toString());
+		
+		this.paymentService.rollbackEvent(event);
 	}
 	
 	
