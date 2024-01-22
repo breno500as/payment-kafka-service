@@ -140,7 +140,7 @@ public class PaymentService {
 		// enviar mais de uma
 		/// vez a mesma mensagem
 		if (this.paymentRepository.existsByOrderIdAndTransactionId(event.getPayload().getId(),
-				event.getPayload().getTransactionId())) {
+				event.getTransactionId())) {
 			throw new ValidationException("There's another transactionId for this validation!");
 		}
 
