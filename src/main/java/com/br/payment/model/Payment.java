@@ -23,26 +23,26 @@ public class Payment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "ORDER_ID", nullable = false)
+	@Column(name = "order_id", nullable = false)
 	private String orderId;
 
-	@Column(name = "TRANSACTION_ID", nullable = false)
+	@Column(name = "transaction_id", nullable = false)
 	private String transactionId;
 
-	@Column(name = "CREATED_AT", nullable = false, updatable = false)
+	@Column(name = "created_at", nullable = false, updatable = false)
 	private LocalDateTime createdAt;
 
-	@Column(name = "UPDATED_AT", nullable = false)
+	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 
-	@Column(name = "TOTAL_ITEMS", nullable = false)
+	@Column(name = "total_items", nullable = false)
 	private int totalItems;
 
-	@Column(name = "TOTAL_AMOUNT", nullable = false)
+	@Column(name = "total_amount", nullable = false)
 	private double totalAmount;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "STATUS", nullable = false)
+	@Column(name = "status", nullable = false)
 	private PaymentStatusEnum status;
 
 	public Long getId() {
