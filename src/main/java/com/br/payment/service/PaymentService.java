@@ -46,7 +46,7 @@ public class PaymentService {
 			this.handleSuccess(event);
 		} catch (Exception e) {
 			this.logger.error("Error trying make payment!", e);
-			this.handleFailCurrentNotExecuted(event, CURRENT_SOURCE);
+			this.handleFailCurrentNotExecuted(event, e.getMessage());
 
 		}
 
